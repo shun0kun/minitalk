@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimots <sshimots@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 12:05:32 by sshimots          #+#    #+#             */
-/*   Updated: 2025/10/02 13:20:31 by sshimots         ###   ########.fr       */
+/*   Created: 2025/05/08 17:49:54 by sshimots          #+#    #+#             */
+/*   Updated: 2025/05/08 17:50:26 by sshimots         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#include "libft.h"
 
-# define _POSIX_C_SOURCE	200809L
-# define _DEFAULT_SOURCE 
-
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-typedef struct s_recv
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	unsigned char			acc;
-	int						count;
-	pid_t					client_pid;
-	volatile sig_atomic_t	wd;
-}	t_recv;
-
-#endif
+	if (lst && new)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
+}

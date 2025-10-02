@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimots <sshimots@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 12:05:32 by sshimots          #+#    #+#             */
-/*   Updated: 2025/10/02 13:20:31 by sshimots         ###   ########.fr       */
+/*   Created: 2025/04/30 16:45:26 by sshimots          #+#    #+#             */
+/*   Updated: 2025/05/07 20:53:03 by sshimots         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#include "libft.h"
 
-# define _POSIX_C_SOURCE	200809L
-# define _DEFAULT_SOURCE 
-
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-typedef struct s_recv
+char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char			acc;
-	int						count;
-	pid_t					client_pid;
-	volatile sig_atomic_t	wd;
-}	t_recv;
+	size_t	i;
 
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	while (1)
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		if (i == 0)
+			break ;
+		i--;
+	}
+	return (NULL);
+}

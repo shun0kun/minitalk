@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimots <sshimots@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 12:05:32 by sshimots          #+#    #+#             */
-/*   Updated: 2025/10/02 13:20:31 by sshimots         ###   ########.fr       */
+/*   Created: 2025/05/07 20:15:43 by sshimots          #+#    #+#             */
+/*   Updated: 2025/05/07 20:52:45 by sshimots         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#include "libft.h"
 
-# define _POSIX_C_SOURCE	200809L
-# define _DEFAULT_SOURCE 
-
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-typedef struct s_recv
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char			acc;
-	int						count;
-	pid_t					client_pid;
-	volatile sig_atomic_t	wd;
-}	t_recv;
+	size_t				i;
+	const unsigned char	*str;
 
-#endif
+	str = (const unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (str[i] == (unsigned char)c)
+			return ((void *)&str[i]);
+		i++;
+	}
+	return (NULL);
+}

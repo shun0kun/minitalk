@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimots <sshimots@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 12:05:32 by sshimots          #+#    #+#             */
-/*   Updated: 2025/10/02 13:20:31 by sshimots         ###   ########.fr       */
+/*   Created: 2025/04/30 18:31:55 by sshimots          #+#    #+#             */
+/*   Updated: 2025/05/07 20:52:45 by sshimots         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#include "libft.h"
 
-# define _POSIX_C_SOURCE	200809L
-# define _DEFAULT_SOURCE 
-
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-typedef struct s_recv
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char			acc;
-	int						count;
-	pid_t					client_pid;
-	volatile sig_atomic_t	wd;
-}	t_recv;
+	size_t	i;
 
-#endif
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		i++;
+	}
+	return (0);
+}

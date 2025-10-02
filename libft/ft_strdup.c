@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sshimots <sshimots@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/02 12:05:32 by sshimots          #+#    #+#             */
-/*   Updated: 2025/10/02 13:20:31 by sshimots         ###   ########.fr       */
+/*   Created: 2025/04/30 21:13:34 by sshimots          #+#    #+#             */
+/*   Updated: 2025/05/08 14:35:20 by sshimots         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#include "libft.h"
 
-# define _POSIX_C_SOURCE	200809L
-# define _DEFAULT_SOURCE 
-
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-
-typedef struct s_recv
+char	*ft_strdup(const char *s)
 {
-	unsigned char			acc;
-	int						count;
-	pid_t					client_pid;
-	volatile sig_atomic_t	wd;
-}	t_recv;
+	size_t	i;
+	size_t	len;
+	char	*p;
 
-#endif
+	i = 0;
+	len = ft_strlen(s);
+	p = malloc((len + 1) * sizeof(char));
+	if (!p)
+		return (NULL);
+	while (s[i])
+	{
+		p[i] = s[i];
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
+}
